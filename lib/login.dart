@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -20,7 +21,10 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 80),
             Column(
               children: <Widget>[
-                Image.asset('assets/images/diamond.png'),
+                Image.asset(
+                  'assets/images/diamond.png',
+                  color: kShrineBlack,
+                ),
                 SizedBox(height: 16),
                 Text('SHRINE'),
               ],
@@ -50,6 +54,9 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 FlatButton(
                   child: Text('CANCEL'),
+                  shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                  ),
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
@@ -58,6 +65,9 @@ class _LoginPageState extends State<LoginPage> {
                 RaisedButton(
                   child: Text('NEXT'),
                   elevation: 8,
+                  shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },

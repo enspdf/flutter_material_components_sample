@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_material_components_sample/model/product.dart';
-import 'package:flutter_material_components_sample/model/products_repository.dart';
+import 'package:flutter_material_components_sample/supplemental/asymmetric_view.dart';
 import 'package:intl/intl.dart';
+
+import 'model/product.dart';
+import 'model/products_repository.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.dark,
         leading: IconButton(
           icon: Icon(
             Icons.menu,
             semanticLabel: 'menu',
           ),
-          onPressed: () {},
+          onPressed: () {
+            print('Menu Button');
+          },
         ),
         actions: <Widget>[
           IconButton(
@@ -21,25 +26,25 @@ class HomePage extends StatelessWidget {
               Icons.search,
               semanticLabel: 'search',
             ),
-            onPressed: () {},
+            onPressed: () {
+              print('Search Button');
+            },
           ),
           IconButton(
             icon: Icon(
               Icons.tune,
               semanticLabel: 'filter',
             ),
-            onPressed: () {},
+            onPressed: () {
+              print('Filter Button');
+            },
           ),
         ],
         title: Text('SHRINE'),
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: EdgeInsets.all(16),
-        childAspectRatio: 8 / 9,
-        children: _buildGridCards(context),
+      body: AsymmetricView(
+        products: ProductsRepository.loadProducts(Category.all),
       ),
-      resizeToAvoidBottomInset: false,
     );
   }
 

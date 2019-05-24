@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
 import 'home.dart';
 import 'login.dart';
-import 'colors.dart';
+import 'supplemental/cut_corner_border.dart';
 
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
@@ -10,24 +11,19 @@ ThemeData _buildShrineTheme() {
   final ThemeData base = ThemeData.light();
 
   return base.copyWith(
-    accentColor: kShrineBrown900,
-    primaryColor: kShrinePink100,
+    primaryColor: kShrinePurple,
     buttonTheme: base.buttonTheme.copyWith(
-      buttonColor: kShrinePink100,
-      textTheme: ButtonTextTheme.normal,
+      buttonColor: kShrinePurple,
+      textTheme: ButtonTextTheme.primary,
+      colorScheme: ColorScheme.light().copyWith(primary: kShrinePurple),
     ),
-    scaffoldBackgroundColor: kShrineBackgroundWhite,
-    cardColor: kShrineBackgroundWhite,
-    textSelectionColor: kShrinePink100,
-    errorColor: kShrineErrorRed,
+    scaffoldBackgroundColor: kShrineSurfaceWhite,
     textTheme: _buildShrineTextTheme(base.textTheme),
     primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
     accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
-    primaryIconTheme: base.iconTheme.copyWith(
-      color: kShrineBrown900,
-    ),
+    primaryIconTheme: base.iconTheme.copyWith(color: kShrineSurfaceWhite),
     inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(),
+      border: CutCornersBorder(),
     ),
   );
 }
@@ -48,8 +44,6 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
       )
       .apply(
         fontFamily: 'Rubik',
-        displayColor: kShrineBrown900,
-        bodyColor: kShrineBrown900,
       );
 }
 
