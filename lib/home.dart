@@ -6,46 +6,14 @@ import 'model/product.dart';
 import 'model/products_repository.dart';
 
 class HomePage extends StatelessWidget {
+  final Category category;
+
+  const HomePage({this.category: Category.all});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        brightness: Brightness.dark,
-        leading: IconButton(
-          icon: Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
-          onPressed: () {
-            print('Menu Button');
-          },
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              semanticLabel: 'search',
-            ),
-            onPressed: () {
-              print('Search Button');
-            },
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.tune,
-              semanticLabel: 'filter',
-            ),
-            onPressed: () {
-              print('Filter Button');
-            },
-          ),
-        ],
-        title: Text('SHRINE'),
-      ),
-      body: AsymmetricView(
-        products: ProductsRepository.loadProducts(Category.all),
-      ),
-    );
+    return AsymmetricView(
+        products: ProductsRepository.loadProducts(Category.all));
   }
 
   List<Card> _buildGridCards(BuildContext context) {
